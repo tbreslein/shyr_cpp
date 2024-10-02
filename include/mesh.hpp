@@ -1,3 +1,5 @@
+#pragma once
+
 #include "config.hpp"
 #include <array>
 
@@ -26,8 +28,8 @@ Mesh<N> init_mesh(const Config &config)
     const double dxi = (config.xi_out - config.xi_in) / N;
     for (int i{0}; i < mesh.n_comp; i++) {
         mesh.xi_west[i] = config.xi_in + dxi * ((double)(i - mesh.ixi_in));
-        mesh.xi_cent[i] = mesh.xi_west + 0.5 * dxi;
-        mesh.xi_east[i] = mesh.xi_west + dxi;
+        mesh.xi_cent[i] = mesh.xi_west[i] + 0.5 * dxi;
+        mesh.xi_east[i] = mesh.xi_west[i] + dxi;
     }
 
     return mesh;

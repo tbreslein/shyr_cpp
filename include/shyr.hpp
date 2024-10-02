@@ -1,10 +1,19 @@
-#include <cstdio>
+#pragma once
+
+#include "config.hpp"
+#include "mesh.hpp"
+#include <print>
+
 namespace shyr
 {
 
-int run()
+template <int N>
+int run(const Config &config)
 {
-    puts("hey from shyr");
+    const auto mesh = shyr::init_mesh<N>(config);
+    for (int i{0}; i < mesh.n_comp; i++) {
+        std::println("{}", mesh.xi_west[i]);
+    }
     return 0;
 }
 
